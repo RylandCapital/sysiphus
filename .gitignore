@@ -4,6 +4,10 @@
 Lib
 Scripts
 
+#openbb_terminal 
+openbb_terminal
+share
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
