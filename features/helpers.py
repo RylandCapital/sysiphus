@@ -10,30 +10,36 @@ from openbb_terminal.common.quantitative_analysis import qa_model
 
 
 
-def vwap(data, reset='W'):
+def vwapdist(data, reset='W'):
     
-    return ta.vwap(
+    return (data['Close']/ta.vwap(
         high=data["High"],
         low=data["Low"],
         close=data["Close"],
         volume=data["Volume"],
         offset=0,
         anchor=reset
-    )
+    )).round(4)
 
-def momomentum_suite(data, lookback=14):
+def macd(data):
 
     macd = momentum_model.macd(data["Close"], 12, 26, 9)
+    
+    return macd
+
+def rsi(data, lookback=14):
+
     rsi = momentum_model.rsi(data["Close"], lookback, 100, 1)
+
+    return rsi
+
+def cci(data, lookback=14):
+
     cci =  momentum_model.cci(
             data["High"], data["Low"], data["Adj Close"], lookback, 0.0015
     )
 
-    return {
-        'macd':macd,
-        'rsi':rsi,
-        'cci':cci
-    }
+    return cci
 
 def sortino(data, lookback=21):
 
