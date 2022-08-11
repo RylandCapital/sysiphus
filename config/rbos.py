@@ -1,0 +1,51 @@
+STOCKS_TO_USE = [
+'AAPL',
+'NVDA',
+'DOW',
+'LIN',
+'AMZN',
+'HD',
+'JPM',
+'GS',
+'O',
+'WELL',
+'PG',
+'KO',
+'JNJ',
+'ABT',
+'DUK',
+'D',
+'GOOG',
+'META',
+'CVX',
+'MPC',
+'UPS',
+'CAT'
+]
+
+PLACEMENTS = {
+    0:'SPY',
+    1:'NVDA',
+    2:'DOW',
+    3:'LIN',
+    4:'AMZN',
+    5:'HD',
+    6:'JPM',
+    7:'GS',
+    8:'O',
+    9:'WELL',
+    10:'PG',
+    11:'KO',
+    12:'JNJ',
+    13:'ABT',
+    14:'DUK',
+    15:'D',
+    16:'GOOG',
+    17:'META',
+    18:'CVX',
+    19:'MPC',
+    20:'UPS',
+    21:'CAT'
+}
+
+START = '01-03-2020'

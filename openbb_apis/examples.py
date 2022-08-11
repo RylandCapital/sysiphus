@@ -5,11 +5,14 @@ from openbb_terminal import api as openbb
 #macd cci rsi
 from openbb_terminal.common.technical_analysis import momentum_model
 
+#sortino
+from openbb_terminal.common.quantitative_analysis import qa_model
+
 #twitter sentiment is possible 
 ticker = 'aapl'
 data = openbb.stocks.load(
     ticker=ticker,
-    start=pd.to_datetime('01-03-2022'),
+    start=pd.to_datetime('01-03-2020'),
 )
 
 macd = momentum_model.macd(data["Close"], 12, 26, 9)
@@ -36,3 +39,7 @@ df_vwap_weekly = ta.vwap(
         offset=0,
         anchor='W'
     )
+
+sortino1y = qa_model.get_sortino(data['Close'].pct_change(), 0, 21, False)
+sortino1w = qa_model.get_sortino(data['Close'].pct_change(), 0, 5, False)
+
