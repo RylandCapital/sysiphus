@@ -4,8 +4,8 @@ import numpy as np
 
 from openbb_terminal import api as openbb
 
-from features.helpers import vwapdist, rsi, cci, macd, sortino
-from config.rbos import STOCKS_TO_USE, PLACEMENTS, START
+from system_features.helpers import vwapdist, rsi, cci, macd, sortino
+from configs.rbos import STOCKS_TO_USE, PLACEMENTS, START
 
 def build():
 
@@ -17,10 +17,14 @@ def build():
     #create features
     [i.insert(len(i.columns), 'vwapW', vwapdist(i, reset='W')) for i in dfs] #distance from weekly vwaps
     [i.insert(len(i.columns), 'vwapM', vwapdist(i, reset='M')) for i in dfs] #distance from weekly vwaps
+    [i.insert(len(i.columns), 'Sortino', sortino(i, lookback=21)) for i in dfs] #distance from weekly vwaps
     
     for i in np.arange(len(dfs)):
         dfs[i] = dfs[i].join(rsi(dfs[i], lookback=14))
         dfs[i] = dfs[i].join(cci(dfs[i], lookback=14))
+
+    return pd.concat([])
+
         
         
 

@@ -1,6 +1,5 @@
 import pandas as pd
 import pandas_ta as ta
-from openbb_terminal import api as openbb
 
 #macd cci rsi
 from openbb_terminal.common.technical_analysis import momentum_model
