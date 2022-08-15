@@ -31,6 +31,15 @@ def build():
     dataset = pd.concat(dfs, axis=1)
     dataset = dataset.join(rbos_next_day(dataset)).dropna()
     dataset.drop(['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume', 'oc%'], axis=1, inplace=True)
+    #15 columns 
+    new_cols = []
+    for i in np.arange(0,len(STOCKS_TO_USE)):
+        for n in np.arange(1,len(dataset.columns.unique())+1-2):
+            new_cols.append('_'+str(i))
+    dataset.columns = [i + j for i, j in zip(dataset.columns[:-2], new_cols)] + dataset.columns[-2:].tolist()
+  
+    
+
 
     return dataset
 
