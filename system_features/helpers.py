@@ -70,3 +70,10 @@ def inside_up(data):
     
     return df['inside_up']
 
+def oc_return(data):
+
+    df = data.copy()
+    df['oc%'] = df['Close']/df['Open']-1
+    
+    return df['oc%']
+

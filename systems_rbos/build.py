@@ -4,7 +4,7 @@ import numpy as np
 
 from openbb_terminal import api as openbb
 
-from system_features.helpers import vwapdist, rsi, cci, macd, sortino, inside, inside_down, inside_up
+from system_features.helpers import vwapdist, rsi, cci, macd, sortino, inside, inside_down, inside_up, oc_return
 from system_targets.helpers import rbos_next_day
 from configs.rbos import STOCKS_TO_USE, PLACEMENTS, START
 
@@ -14,6 +14,7 @@ def build():
     dfs = [
         openbb.stocks.load(ticker=i, start=pd.to_datetime(START)) for i in STOCKS_TO_USE
         ]
+    [i.insert(len(i.columns), 'oc%', oc_return(i)) for i in dfs] #open-close return
 
     #create features
     [i.insert(len(i.columns), 'vwapW', vwapdist(i, reset='W')) for i in dfs] #distance from weekly vwaps
@@ -29,9 +30,9 @@ def build():
 
     dataset = pd.concat(dfs, axis=1)
     dataset = dataset.join(rbos_next_day(dataset)).dropna()
-    dataset.drop(['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'], axis=1, inplace=True)
+    dataset.drop(['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume', 'oc%'], axis=1, inplace=True)
 
-    return 
+    return dataset
 
         
         

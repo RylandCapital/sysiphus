@@ -2,7 +2,7 @@ STOCKS_TO_USE = [
 'SPY',
 'AAPL',
 'NVDA',
-'DOW',
+'NEM',
 'LIN',
 'AMZN',
 'HD',
@@ -17,7 +17,7 @@ STOCKS_TO_USE = [
 'DUK',
 'D',
 'GOOG',
-'META',
+'DIS',
 'CVX',
 'MPC',
 'UPS',
@@ -28,7 +28,7 @@ PLACEMENTS = {
     0:'SPY',
     1:'AAPL',
     2:'NVDA',
-    3:'DOW',
+    3:'NEM',
     4:'LIN',
     5:'AMZN',
     6:'HD',
@@ -43,11 +43,11 @@ PLACEMENTS = {
     15:'DUK',
     16:'D',
     17:'GOOG',
-    18:'META',
+    18:'DIS',
     19:'CVX',
     20:'MPC',
     21:'UPS',
     22:'CAT'
 }
 
-START = '01-03-2020'
+START = '01-03-2010'
