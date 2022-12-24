@@ -38,7 +38,7 @@ def build():
             new_cols.append('_'+str(i))
     dataset.columns = [i + j for i, j in zip(dataset.columns[:-2], new_cols)] + dataset.columns[-2:].tolist()
   
-    return dataset
+    return dataset.reset_index()
 
         
         
